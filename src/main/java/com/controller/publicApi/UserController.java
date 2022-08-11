@@ -33,7 +33,7 @@ public class UserController {
 		 * ResponseEntity.unprocessableEntity().build(); } return
 		 * ResponseEntity.ok(user);
 		 */
-		  Optional<RoleBean> role= roleRepo.findById(4);
+		  Optional<RoleBean> role= roleRepo.findById(11);
 		user.setRole(role.get());
 		try {
 			userRepo.save(user);	
