@@ -21,6 +21,7 @@ public class RoleSeed {
 	{
 		//RoleBean role=new RoleBean();
 		RoleBean role=roleRepo.findByRoleName("admin");
+		
 		if(role==null)
 		{
 			RoleBean role1=new RoleBean();

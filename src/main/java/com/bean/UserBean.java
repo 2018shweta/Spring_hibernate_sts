@@ -24,7 +24,7 @@ public class UserBean {
 	String email;
 	String password;
 	String gender;
-	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="roleId",nullable=false)
 	RoleBean role;

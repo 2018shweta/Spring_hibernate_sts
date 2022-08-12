@@ -55,8 +55,8 @@ public class AccountController {
 
 	@GetMapping("/acUser/{userId}")
 	public ResponseEntity<?> acByUser(@RequestBody @PathVariable("userId") Integer userId) {
-		Optional<AccountBean> acs = accountRepo.findById(userId);
-		System.out.println("acs" + acs.get());
+		List<AccountBean> acs = accountRepo.findAccounts(userId);
+		System.out.println(acs);
 
 		return ResponseEntity.ok(acs);
 	}

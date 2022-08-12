@@ -1,9 +1,12 @@
 package com.bean;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +19,10 @@ public class CategoryBean {
 	
 	private String categoryName;
 
+	
+	 @ManyToMany(mappedBy = "categories") 
+	 Set<ProductBean> products;
+	 
 	public Integer getCategoryId() {
 		return categoryId;
 	}

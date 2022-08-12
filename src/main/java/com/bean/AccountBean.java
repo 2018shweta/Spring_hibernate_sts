@@ -18,10 +18,31 @@ public class AccountBean {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer accountId;
 	private String accountType;
+	private Float balance;
+	private String currency;
 	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "userId")
 	UserBean users;
+	
+	public Float getBalance() {
+		return balance;
+	}
+	public void setBalance(Float balance) {
+		this.balance = balance;
+	}
+	public String getCurrency() {
+		return currency;
+	}
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+	public UserBean getUsers() {
+		return users;
+	}
+	public void setUsers(UserBean users) {
+		this.users = users;
+	}
 	public Integer getAccountId() {
 		return accountId;
 	}
