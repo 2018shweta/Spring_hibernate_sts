@@ -10,5 +10,8 @@ import com.bean.RoleBean;
 @Repository
 public interface RoleRepository extends CrudRepository<RoleBean, Integer> {
 	List<RoleBean> findAll();
+
+
+	RoleBean findByRoleName(String string);
 	
 }

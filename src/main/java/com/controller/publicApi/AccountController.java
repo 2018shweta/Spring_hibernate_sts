@@ -19,51 +19,46 @@ import com.repository.AccountRepository;
 import com.repository.UserRepository;
 
 @RestController
-@RequestMapping("/public")
+@RequestMapping("/publicApi")
 public class AccountController {
 
 	@Autowired
 	AccountRepository accountRepo;
 	@Autowired
 	UserRepository userRepo;
+
 	@PostMapping("/addAccount")
-	public ResponseEntity<?> addAcoount(@RequestBody AccountBean accounts)
-	{
-		 Optional<UserBean> users= userRepo.findById(15);
-		 accounts.setUser(users.get());
+	public ResponseEntity<?> addAcoount(@RequestBody AccountBean accounts) {
+		Optional<UserBean> users = userRepo.findById(15);
+		accounts.setUser(users.get());
 		accountRepo.save(accounts);
 		return ResponseEntity.ok(accounts);
 	}
-	
+
 	@GetMapping("/allAccounts")
-	public ResponseEntity<?> allAccounts()
-	{
-		List<AccountBean> accounts=accountRepo.findAll();
+	public ResponseEntity<?> allAccounts() {
+		List<AccountBean> accounts = accountRepo.findAll();
 		return ResponseEntity.ok(accounts);
 	}
-	
+
 	@DeleteMapping("/account/{accountId}")
-	public ResponseEntity<?> deleteAccount(@PathVariable("accountId") Integer accountId)
-	{
-		Optional<AccountBean> account= accountRepo.findById(accountId);
-		if(account.isPresent())
-		{
-			AccountBean ac=account.get();
+	public ResponseEntity<?> deleteAccount(@PathVariable("accountId") Integer accountId) {
+		Optional<AccountBean> account = accountRepo.findById(accountId);
+		if (account.isPresent()) {
+			AccountBean ac = account.get();
 			accountRepo.delete(ac);
 			return ResponseEntity.ok(ac);
-		}
-		else {
+		} else {
 			return ResponseEntity.unprocessableEntity().build();
 		}
 	}
-	
+
 	@GetMapping("/acUser/{userId}")
-	public ResponseEntity<?> acByUser(@PathVariable("userId") Integer userId)
-	{
-		Optional<AccountBean> acs= accountRepo.findById(userId);
-		System.out.println("acs"+acs);
-		
+	public ResponseEntity<?> acByUser(@RequestBody @PathVariable("userId") Integer userId) {
+		Optional<AccountBean> acs = accountRepo.findById(userId);
+		System.out.println("acs" + acs.get());
+
 		return ResponseEntity.ok(acs);
 	}
-	
+
 }
